@@ -4,7 +4,7 @@
 
 ayuda() {
 	cat <<'FINAYUDA'
-	-q "sale a" n presiones
+	-q "sale tras" n presiones
 	-l "longitud de mecanografiado por caracter" por defecto: 4
 	-f "falla al hackear"
 	-s "hackeo exitoso"
@@ -72,7 +72,7 @@ end() {
 		hack
 	fi
 }
-text=`cat << 'FINDEGILADA'
+texto=`cat << 'FINDEGILADA'
 /* Inicia A2 - uno for init_task, uno para asegurar que nunca se libere */
 struct group_info init_groups = { .usage = ATOMIC_INIT(2) };
  
@@ -85,7 +85,7 @@ struct group_info *groups_alloc(int gidsetsize)
 	int i;
  
 	nblocks = (gidsetsize + NGROUPS_PER_BLOCK - 1) / NGROUPS_PER_BLOCK;
-/* Asegurese de alocar al menos un puntero de bloque indirecto */
+/* Asegúrese de alocar al menos un puntero de bloque indirecto */
 	nblocks = nblocks ? : 1;
 	group_info = kmalloc(sizeof(*group_info) + nblocks*sizeof(gid_t *), GFP_USER);
 	if (!group_info)
@@ -1037,9 +1037,9 @@ FINDEGILADA`
  
  
 start=0
-length=$((`echo "$text" | wc -c` / ${len:=4}))
+length=$((`echo "$texto" | wc -c` / ${len:=4}))
 for (( go = 1 ; go <= ${stopat:=length} ; go++ ))
-        do echo -n "${text:$start:${len:=4}}"
+        do echo -n "${texto:$start:${len:=4}}"
         (( start = start + ${len:=4} ))
         read -sn 1 inpoot
 	if [ "$inpoot" == '`' ]; then
